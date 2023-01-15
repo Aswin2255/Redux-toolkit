@@ -1,11 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { getallmovies, getallshows } from '../../features/movies/movieslice'
+import { getallmovies, getallshows, getloader } from '../../features/movies/movieslice'
 import Moviecard from '../Moviecard/Moviecard'
 import './movilisting.scss'
 function Movielisting() {
     const movies = useSelector(getallmovies)
     const shows = useSelector(getallshows)
+    const loader = useSelector(getloader)
+    
     console.log('-------------'+movies)
     let rendermovies,rendershows = '';
     rendermovies = movies.Response === "True" ? (
@@ -32,11 +34,11 @@ function Movielisting() {
     <div className='movie-wrapper'>
         <div className='movie-list'>
             <h2>Movies</h2>
-            <div className='movie-container'>{rendermovies}</div>
+            <div className='movie-container'>{ loader ? <h1>loading..</h1> : rendermovies}</div>
         </div>
         <div className='show-list'>
             <h2>Shows</h2>
-            <div className='movie-container'>{rendershows}</div>
+            <div className='movie-container'>{ loader ? <h1>loading..</h1> : rendershows}</div>
         </div>
       
     </div>

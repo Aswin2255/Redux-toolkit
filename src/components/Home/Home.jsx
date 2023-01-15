@@ -9,9 +9,11 @@ import { addmovies, fetchasynchmovies, fetchasyncshows } from '../../features/mo
 function Home() {
     
     const dispatch = useDispatch()
+    const movie = 'harry'
+    const show = 'friends'
     useEffect(()=>{
-       dispatch(fetchasynchmovies())
-       dispatch(fetchasyncshows())
+       dispatch(fetchasynchmovies(movie))
+       dispatch(fetchasyncshows(show))
         
     },[])
    
